@@ -1,4 +1,4 @@
-# Crystal Kizor — Stage 1 Assessment
+# Crystal Kizor - Stage 1 Assessment
 
 A responsive personal-brand landing page for Crystal Kizor, built for the Web Developer Stage 1 assessment.
 
@@ -18,8 +18,8 @@ The supplied imagery is used as temporary visual studies, consistent with the as
 
 ## Routes
 
-- `/` — main landing page
-- `/notes` — assessment design, AI product, and analytics notes
+- `/` - main landing page
+- `/notes` - assessment design, AI product, and analytics notes
 
 ## Run locally
 

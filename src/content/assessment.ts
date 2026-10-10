@@ -1,27 +1,69 @@
-export function wordCount(text: string): number {
-  return text.trim().split(/\s+/).filter(Boolean).length;
+export function wordCount(content: string | object): number {
+  const collect = (value: unknown): string[] => {
+    if (typeof value === "string") return [value];
+    if (Array.isArray(value)) return value.flatMap(collect);
+    if (value && typeof value === "object") return Object.values(value).flatMap(collect);
+    return [];
+  };
+
+  return collect(content).join(" ").trim().split(/\s+/).filter(Boolean).length;
 }
 
 export const designNote = `Crystal is the centre. The initiatives are different doors out of one idea: work that makes ordinary life more possible where heat, materials and daily use all matter. Studio COKA leads, because a first visit has to explain the practice. ELEvated and The Effective Architect sit beside it as making and teaching. Speaking is the public door. AKO Alliance and Alive and Free are grouped as work with young people, and kept apart from fees and products so education and faith are not sold as services. A final directory sends each visitor on by intent, not by a grid of equal logos.
 
-The page is an editorial, not a startup template: warm paper, ink, a single clay accent, Fraunces for headlines and Outfit for the interface. An airflow diagram — low inlet, high outlet — is the signature drawing, because that is the idea behind the practice. Photographs are temporary studies of light, shade and material. They are not a record of completed work. Built with React on Vite and Tailwind CSS v4. Two routes: the landing page, and these notes.`;
+The page is an editorial, not a startup template: warm paper, ink, a single clay accent, Fraunces for headlines and Outfit for the interface. An airflow diagram, with a low inlet and high outlet, is the signature drawing, because that is the idea behind the practice. Photographs are temporary studies of light, shade and material. They are not a record of completed work. Built with React on Vite and Tailwind CSS v4. Two routes: the landing page, and these notes.`;
 
-export const aiProduct = `Studio Notes is a study companion for The Effective Architect.
+export const aiProduct = {
+  intro: "Studio Notes is a focused study companion for The Effective Architect (TEA). It helps architects and built-environment professionals put TEA's published lessons into practice between courses and episodes.",
+  audience: "Learners ask practical questions in plain language and receive concise, source-grounded explanations they can apply to a current project.",
+  experience: [
+    "Answer from TEA's own lessons and approved notes, rather than general web knowledge.",
+    "Show the source passage or citation behind each answer.",
+    "Suggest one exercise or reflection to try on the learner's next project."
+  ],
+  example: "A learner asks how to explain high-level openings to a client who wants air-conditioning everywhere. Studio Notes gives a short explanation, two or three relevant citations, and a prompt to test the idea against a room they are drawing.",
+  approach: "The first version uses retrieval-augmented generation. A hosted model with reliable instruction-following, such as Claude or GPT through an API, answers from a curated TEA corpus that the team has permission to use. If retrieval finds no useful source, the tool says so instead of guessing.",
+  mvp: [
+    "One focused chat screen",
+    "Visible citation chips linked to source material",
+    "A way for an editor to flag an inaccurate answer",
+    "Simple access-code entry"
+  ],
+  boundaries: [
+    "It does not produce drawings, calculate structures, or claim that a design meets building code.",
+    "It does not provide stamped advice or replace an architect of record.",
+    "It does not accept client drawings for upload.",
+    "It redirects questions about children or faith to the appropriate initiative and safeguards."
+  ],
+  safeguards: "Questions are logged only to identify gaps in the teaching. Because a model can misread a passage, sources remain visible and a person can retract an answer. The goal is a dependable tutor for published teaching, not an authority that makes professional decisions."
+};
 
-It serves architects and built-environment professionals who learn with TEA. They ask a practice question in plain language. The tool answers only from TEA’s own lessons and notes, shows the passage it used, and suggests one exercise for the next project. It does not draw, calculate structure, or claim that a design meets code.
-
-Teaching about hot-climate design and careers is scattered. General chat tools invent precedents and sound more certain than the source. A locked companion makes TEA useful between published lessons.
-
-Someone asks, for example, how to explain high-level openings to a client who wants air-conditioning everywhere. Studio Notes returns a short explanation, two or three citations, and a prompt to test the idea on a room they are drawing.
-
-The first version is retrieval-augmented generation. A hosted model with reliable instruction-following — Claude or GPT, via API — answers from embeddings of a curated TEA corpus the team has the right to use. If retrieval finds nothing, the tool says so. The MVP is one chat screen, citation chips, a way for an editor to flag a bad answer, and a simple access code. Client drawings are never uploaded. Questions are logged only to see gaps in the teaching.
-
-The model can still misread a passage, so sources stay visible and a person can retract an answer. It refuses structural design, stamped advice, and questions about children or faith. Those sit with other initiatives and need different safeguards. Studio Notes is a tutor for published teaching, not an architect of record.`;
-
-export const analyticsNote = `Judge the site by whether the right visitor reaches a next step, not by traffic alone.
-
-Track sessions, source and device; scroll depth through the practice, the pathway list and the enquiry; clicks on each pathway and outbound link; enquiry starts, field errors and completions; and Core Web Vitals — LCP, INP and CLS.
-
-Use Plausible or Fathom for privacy-light traffic, Google Analytics 4 if funnels are required, and a few Clarity recordings for friction. Name each event once, so a pathway click is not counted as a page view. Each month, change one thing: move a path visitors never reach, shorten a form that dies on mobile, or cut a section nobody sees. Compare that same event before and after.
-
-Five thousand visits and five enquiries is a 0.1 percent completion. I would not redesign first. I would separate poor traffic from a broken page: source, place, and whether people match a client, student, organiser or casual reader. Then the funnel — who reached the enquiry, who started it, and where they stopped — split by phone and desktop. I would check that submit actually fires, that no field fails in silence, and that the page matches the link that brought people in. I would watch five recordings, fix the worst break, rewrite the main call to action so it names the outcome, and hold that change for two weeks before touching the rest.`;
+export const analyticsNote = {
+  principle: "Judge the site by whether the right visitor reaches a useful next step, not by traffic alone.",
+  metrics: [
+    { title: "Visitor context", detail: "Sessions by source, campaign, device, and audience intent." },
+    { title: "Content engagement", detail: "Scroll depth through the practice introduction, pathway list, and enquiry section." },
+    { title: "Pathway interest", detail: "Clicks on each initiative, pathway, and outbound link." },
+    { title: "Enquiry conversion", detail: "Form starts, field errors, submission attempts, and completed enquiries." },
+    { title: "Site performance", detail: "Core Web Vitals: Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS)." }
+  ],
+  tools: [
+    { title: "Plausible or Fathom", detail: "Privacy-conscious traffic and referral reporting." },
+    { title: "Google Analytics 4", detail: "Use when more detailed conversion funnels are needed." },
+    { title: "Microsoft Clarity", detail: "Review a small number of session recordings to spot friction, with privacy settings configured carefully." }
+  ],
+  review: [
+    "Give each meaningful interaction one clearly defined event. Do not count a pathway click as a page view.",
+    "Review the same measures monthly and change one thing at a time.",
+    "Compare results before and after the change, then keep, revise, or reverse it based on evidence."
+  ],
+  diagnosis: "If 5,000 visits produce only five enquiries, the completion rate is 0.1%. I would investigate before redesigning the whole site.",
+  checks: [
+    "Check whether traffic sources and visitor locations match the intended audiences: clients, students, event organisers, or casual readers.",
+    "Map the enquiry funnel: who reaches the form, who starts it, and where visitors stop. Compare phone and desktop behaviour.",
+    "Confirm that form submission tracking works and that validation errors are visible rather than silent.",
+    "Check that the landing page fulfils the promise made by the link or campaign that brought the visitor in.",
+    "Review five session recordings, fix the clearest point of friction, and make the main call to action state the outcome.",
+    "Hold that single change for two weeks before making another, so the impact can be assessed."
+  ]
+};

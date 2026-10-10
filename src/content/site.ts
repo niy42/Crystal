@@ -1,6 +1,6 @@
 export const intents = [
   { id: "studio", label: "A project with Studio COKA" },
-  { id: "elevated", label: "ELEvated — furniture and objects" },
+  { id: "elevated", label: "ELEvated - furniture and objects" },
   { id: "tea", label: "The Effective Architect" },
   { id: "speaking", label: "A speaking invitation" },
   { id: "ako", label: "AKO Alliance" },
@@ -36,7 +36,7 @@ export const services = [
   {
     index: "01",
     title: "Architecture",
-    text: "Buildings shaped around climate, use and place — thoughtful, and meant to perform without leaning on constant cooling.",
+    text: "Buildings shaped around climate, use and place, thoughtfully designed to perform without leaning on constant cooling.",
   },
   {
     index: "02",
