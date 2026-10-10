@@ -1,4 +1,4 @@
-# Crystal Kizor, Stage 1 Assessment
+# Crystal Kizor — Stage 1 Assessment
 
 A responsive personal-brand landing page for Crystal Kizor, built for the Web Developer Stage 1 assessment.
 
@@ -18,8 +18,8 @@ The supplied imagery is used as temporary visual studies, consistent with the as
 
 ## Routes
 
-- `/`, main landing page
-- `/notes`, assessment design, AI product, and analytics notes
+- `/` — main landing page
+- `/notes` — assessment design, AI product, and analytics notes
 
 ## Run locally
 
@@ -47,3 +47,8 @@ The detailed responses are kept in `src/content/assessment.ts` and surfaced at `
 ## Deployment
 
 Deploy as a standard Vite static site. Run the production build locally before publishing the `dist` directory or connecting the repository to a static hosting provider.
+
+## GitHub Pages deployment
+
+This Vite project is configured for the repository project site at `https://niy42.github.io/Crystal/`.
+The `base` option in `vite.config.ts` is set to `/Crystal/`, and public media references use `import.meta.env.BASE_URL` so they resolve correctly when the app is hosted under that path.
