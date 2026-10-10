@@ -1,0 +1,6 @@
+import { aiProduct, analyticsNote, designNote, wordCount } from "../content/assessment";
+
+
+export default function NotesPage() {
+  return <main className="min-h-screen bg-paper px-5 py-16 lg:px-8"><article className="mx-auto max-w-3xl"><a href="/" className="text-sm underline underline-offset-4">← Back to Crystal Kizor</a><p className="mt-12 text-xs uppercase tracking-[.2em] text-clay">Assessment notes</p><h1 className="mt-4 font-serif text-6xl tracking-tight">Thinking behind the work</h1><section className="mt-14 border-t border-line pt-8"><h2 className="font-serif text-3xl">Design note</h2><p className="mt-5 whitespace-pre-line leading-8 text-muted">{designNote}</p><p className="mt-4 text-xs text-muted">{wordCount(designNote)} words</p></section><section className="mt-14 border-t border-line pt-8"><h2 className="font-serif text-3xl">AI product thinking</h2><p className="mt-5 whitespace-pre-line leading-8 text-muted">{aiProduct}</p><p className="mt-4 text-xs text-muted">{wordCount(aiProduct)} words</p></section><section className="mt-14 border-t border-line pt-8"><h2 className="font-serif text-3xl">Analytics & improvement</h2><p className="mt-5 whitespace-pre-line leading-8 text-muted">{analyticsNote}</p><p className="mt-4 text-xs text-muted">{wordCount(analyticsNote)} words</p></section></article></main>;
+}

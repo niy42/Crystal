@@ -1,0 +1,5 @@
+Crystal is the centre of the experience. The page treats her initiatives as different doors into one ecosystem rather than seven equal businesses. Studio COKA leads because it is the clearest expression of the practice; ELEvated and The Effective Architect follow as making and teaching; speaking is a public pathway; AKO Alliance and Alive and Free are presented as mission-led work; research and writing remain directly under Crystal's name. A final pathway directory lets visitors choose their next step by intent.
+
+The visual direction is editorial and architectural: warm paper, ink, clay and olive, with Fraunces for expressive headlines and Outfit for interface copy. The supplied imagery is used as temporary studies of light, material and space rather than being presented as unverified completed work. The experience uses responsive layouts, semantic HTML, keyboard-visible focus states, reduced-motion support and lightweight interactions.
+
+The implementation uses React, Vite, TypeScript and Tailwind CSS v4. The content model keeps assessment responses separate from presentation, making the page easier to maintain and extend.
